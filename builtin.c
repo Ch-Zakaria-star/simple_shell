@@ -81,7 +81,7 @@ int _mycd(info_t *info)
 
 /**
  * _myhelp - display a help message
- * @info: takes a pointer to a structure, which is used to maintain a 
+ * @info: takes a pointer to a structure, which is used to maintain a
  * constant function prototype.
  * Return: Always 0
  */

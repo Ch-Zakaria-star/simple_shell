@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _erratoi - converts the string to an integer
- * @s: string to be converted
+ * _erratoi - converts a string to an integer
+ * @s: a string
  * Return: 0 if no numbers in string, converted number otherwise
  * -1 on error
  */
@@ -29,8 +29,8 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an error message
- * @info: parameter & return info struct
+ * print_error - prints an error message to standard error output
+ * @info: parameter & return info structure
  * @estr: string containing the specified error type
  * Return: 0 if no numbers in the string, converted number otherwise
  * -1 on error
@@ -47,9 +47,10 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - function prints the decimal (integer) number (base 10)
+ * print_d - prints a decimal (integer) number (base 10) to a file descriptor
+ * specified as the second argument
  * @input: the input
- * @fd: filedescriptor to write to
+ * @fd: the filedescriptor
  *
  * Return: the number of characters printed
  */
@@ -86,10 +87,10 @@ int print_d(int input, int fd)
 }
 
 /**
- * convert_number - converter function, the clone of itoa
- * @num: the number
- * @base: the base
- * @flags: argument flags
+ * convert_number - converts a number to a string in the specified base
+ * @num: the number to convert
+ * @base: the base of the number
+ * @flags: flag indicating whether the number is signed or unsigned
  *
  * Return: string
  */
@@ -122,8 +123,9 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * remove_comments - the function replaces first instance of '#' with '\0'
- * @buf: the address of the string to modify
+ * remove_comments - replaces the first instance of a "#" character
+ * with a null character
+ * @buf: temporary storage area used to modify the address of the string
  *
  * Return: Always 0;
  */

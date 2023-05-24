@@ -1,38 +1,57 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
- * _env - printing environmental variables
- * @av: user input comands
- * @lineptr: user input string
- * Return: always 1
+ * exit_function - function to free all memory allocations
+ * before exiting program
+ * @args: terminal passed arguments pointer
+ * @line: unknown
+ * Return: int
  */
 
-int _env(char **av, char *lineptr)
+int exit_function(char **args, char *line)
 {
-	size_t i = 0;
+	int number;
 
-	while (environ[i])
+	number = 0;
+	if (args[1] != NULL)
+		number = _atoi(args[1]);
+	if (number == -1)
 	{
-		_puts(environ[i]);
-		_puts("\n");
-		i++;
+		return (-1);
 	}
-
-	freeLAP(av, lineptr, NULL);
-
-	return (1);
+	else
+	{
+		free_function(1, line);
+		free_function(2, args);
+		exit(number);
+	}
 }
 
 /**
- * exit_shell - exit shell
- * @av: tokenized input command
- * @lineptr: user input command string
- * Return: Always 0
+ * print_env - printing the OS environment
+ * Return: 0 for success
  */
 
-int exit_shell(char **av, char *lineptr)
+int print_env(void)
 {
-	freeLAP(av, lineptr, NULL);
-	exit(0);
+	int x;
+
+	for (x = 0; environ[x] != NULL; x++)
+	{
+		write(STDOUT_FILENO, environ[x], strlen(environ[x]));
+		write(STDOUT_FILENO, "\n", 1);
+	}
+	return (0);
 }
 
+/**
+ * sigign - determining the interactivity of the program
+ * @sig: signal input
+ * Return: void
+ */
+
+void sigign(int sig)
+{
+	if (sig == SIGINT)
+		write(STDOUT_FILENO, "\n($) ", 5);
+}

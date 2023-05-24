@@ -3,7 +3,7 @@
 /**
  * _myhistory - displays history list, one command by line, preceded
  * with line numbers, starting at 0.
- * @info: the structure containing potential arguments. Used to maintain
+ * @info: takes a pointer to a structure, which is used to maintain a
  * constant function prototype.
  * Return: Always 0
  */
@@ -14,9 +14,9 @@ int _myhistory(info_t *info)
 }
 
 /**
- * unset_alias - sets alias to a string
- * @info: the parameter struct
- * @str: string alias
+ * unset_alias - removes an alias to a string
+ * @info: parameter struct
+ * @str: a string
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -37,9 +37,9 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * set_alias - sets alias to a string
- * @info: the parameter struct
- * @str: string alias
+ * set_alias - creates an alias to a string
+ * @info: parameter struct
+ * @str: a string
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -58,8 +58,9 @@ int set_alias(info_t *info, char *str)
 }
 
 /**
- * print_alias - prints the alias string
- * @node: alias node
+ * print_alias - prints an alias string
+ * @node: common terminology that is used to demonstrate a single block or
+ * linked list or tree or related data structure
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -81,8 +82,8 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - mimics alias builtin (man alias)
- * @info: the structure containing potential arguments. Used to maintain
+ * _myalias - create and manipulate aliases in a shell
+ * @info: takes a pointer to a structure, which is used to maintain a
  * constant function prototype.
  * Return: Always 0
  */
